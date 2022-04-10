@@ -40,7 +40,7 @@ const NavigationBar = () => {
 									</Disclosure.Button>
 								</div>
 
-								{/* Mobile menu */}
+								{/* Navigation  */}
 								<div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
 									<div className="hidden sm:block sm:ml-6">
 										<div className="flex space-x-4">
@@ -78,24 +78,24 @@ const NavigationBar = () => {
 										style={{ height: 40, width: 40 }}
 									/>
 								</div>
-
 							</div>
 						</div>
+
+						{/* Mobile Navigation */}
 
 						<Disclosure.Panel className="sm:hidden">
 							<div className="px-2 pt-2 pb-3 space-y-1">
 								{navigation.map((item) => (
-											<Disclosure.Button
-									key={item.name}
-							
-									href={item.href}
-								className={({ isActive }) =>
-														isActive ? activeButtonStyle : buttonStyle
-													}
-									
-								>
-									{item.name}
-								</Disclosure.Button>
+									<Disclosure.Button
+										key={item.name}
+										className={({ isActive }) =>
+											isActive ? activeButtonStyle : buttonStyle
+										}
+									>
+										<NavLink key={item.name} to={item.href}>
+											{item.name}
+										</NavLink>
+									</Disclosure.Button>
 								))}
 							</div>
 						</Disclosure.Panel>
@@ -107,6 +107,3 @@ const NavigationBar = () => {
 };
 
 export default NavigationBar;
-
-
-
