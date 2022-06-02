@@ -17,16 +17,16 @@ function classNames(...classes) {
 
 const NavigationBar = () => {
 	let buttonStyle =
-		'text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium';
+		'text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-xl';
 	let activeButtonStyle =
-		'bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium';
+		'bg-gray-900/70 text-white block px-3 py-2 rounded-md text-xl';
 
 	return (
 		<>
-			<Disclosure as="nav" className="font-mono ">
+			<Disclosure as="nav" className="font-mono sticky top-0 z-50">
 				{({ open }) => (
 					<>
-						<div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+						<div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 ">
 							<div className="relative flex items-center justify-between h-16">
 								<div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
 									{/* Mobile menu button*/}
