@@ -1,14 +1,12 @@
 import { Fragment } from 'react';
-import { Disclosure, Menu, Transition } from '@headlessui/react';
-import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline';
+import { Disclosure} from '@headlessui/react';
+import {MenuIcon, XIcon } from '@heroicons/react/outline';
 import { NavLink } from 'react-router-dom';
 import { SocialIcon } from 'react-social-icons';
 
 const navigation = [
 	{ name: 'Sandeep Saini', href: '/', current: true },
-	{ name: 'Projects', href: '/projects', current: false },
-	{ name: 'About Me', href: '/about', current: false },
-	{ name: 'Contact', href: '/contact', current: false },
+	{ name: 'Resume', href: '/resume', current: false },
 ];
 
 function classNames(...classes) {

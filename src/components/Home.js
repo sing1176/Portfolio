@@ -5,20 +5,14 @@ import { NavLink } from 'react-router-dom';
 const Home = () => {
 	return (
 		<>
-			<main className="w-full height-auto  text-white font-mono ">
+			<main className="w-full height-screen  text-white font-mono ">
 				<div className="headerText">
-					<div class=" my-40 text-center">
-						<h1 className="text-5xl ">Sandeep Saini</h1>
-						<h2 class="my-6 px-4  text-4xl">
-							Full Stack developer and UI/UX Designer.
-						</h2>
-						<h2 className="py-4">
-							<a
-								className="bg-gray-700/40 px-5 hover:bg-white/60 hover:text-black  py-2 rounded-md  my-10 text-xl"
-								href="/projects"
-							>
-								View Projects
-							</a>
+					<div class=" my-40 text-center text-2xl md:text-3xl lg:text-4xl ">
+						<h1 className="">
+							Welcome to my Portfolio
+						</h1>
+						<h2 class="my-6 px-4">
+							I am a Full Stack developer and UI/UX Designer.
 						</h2>
 					</div>
 				</div>
@@ -29,7 +23,7 @@ const Home = () => {
 						</h3>
 					</div>
 
-					<div class=" mx-12 grid md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-7 my-5">
+					<div class=" mx-12 grid md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-7 py-5">
 						<div className="languages bg-gray-700/20 rounded-md p-2 ">
 							<h1 className="text-xl underline my-3 bg-gray-700/10 rounded-md ">
 								Languages
@@ -97,7 +91,6 @@ const Home = () => {
 								<li>Content Creator</li>
 								<li>Social Media Management</li>
 								<li>Photographer/Videographer</li>
-								
 							</ul>
 						</div>
 					</div>
@@ -109,13 +102,3 @@ const Home = () => {
 
 export default Home;
 
-// <section className="flex justify-center pt-64 px-8">
-// 				<div className="wrapper">
-
-// 				</div>
-
-// 				<h1 className="text-xl md:text-2xl lg:text-4xl">
-// 					Hey, I am Sandeep Welcome to my portfolio 😊
-// 				</h1>
-// 			</section>
-// 			<p>Frontend Developer and UI/UX Designer for both Web and Mobile</p>
