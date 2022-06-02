@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 import { SocialIcon } from 'react-social-icons';
 
 const navigation = [
-	{ name: 'Sandeep Saini', href: '/', current: true },
+	{ name: 'Sandeep Saini', href: '/Portfolio', current: true },
 	{ name: 'Resume', href: '/resume', current: false },
 ];
 
