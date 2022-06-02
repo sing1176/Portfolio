@@ -1,5 +1,3 @@
-
-import resume from '../assets/resume.pdf'
 import resumeIMG from '../assets/resumeIMG.jpg'
 import React, { useState , Img } from 'react';
 
