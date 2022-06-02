@@ -10,8 +10,8 @@ function App() {
 				<BrowserRouter>
 					<NavigationBar />
 					<Routes>
-						<Route path="/" element={<Home />} />
-						<Route path="resume" element={<Resume />} />
+						<Route path="/home" element={<Home />} />
+						<Route path="/resume" element={<Resume />} />
 					</Routes>
 				</BrowserRouter>
 			</div>
