@@ -6,7 +6,6 @@ import { SocialIcon } from 'react-social-icons';
 
 const navigation = [
 	{ name: 'Sandeep Saini', href: '/Portfolio', current: true },
-	{ name: 'Resume', href: '/resume', current: false },
 ];
 
 function classNames(...classes) {
