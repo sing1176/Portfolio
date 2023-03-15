@@ -1,6 +1,7 @@
 import React from 'react';
 import '../index.css';
 import me from '../assets/me.jpg';
+import { motion } from 'framer-motion';
 const Home = () => {
   const options = [
     'Full Stack Developer',
@@ -14,6 +15,8 @@ const Home = () => {
   const [isDeleting, setIsDeleting] = React.useState(false);
   const [loopNum, setLoopNum] = React.useState(0);
   const [typingSpeed, setTypingSpeed] = React.useState(150);
+  const [clientX, setClientX] = React.useState(0);
+  const [clientY, setClientY] = React.useState(0);
 
   React.useEffect(() => {
     const lastIndex = length - 1;
@@ -58,14 +61,54 @@ const Home = () => {
     return () => clearTimeout(timeout);
   }, [text, isDeleting, loopNum]);
 
+  const style = {
+    background: 'linear-gradient(90deg, #FF008C 0%, #FF8C00 100%)',
+    WebkitBackgroundClip: 'text',
+    WebkitTextFillColor: 'transparent',
+  };
+
+  const blobDesign = {
+    background: 'linear-gradient(to right, pink, purple)',
+    height: '200px',
+    width: '200px',
+    filter: 'blur(80px)',
+  };
+
+  const onMouseMove = (e) => {
+    const { clientX, clientY } = e;
+    setClientX(clientX);
+    setClientY(clientY);
+  };
+
   return (
     <>
-      <main className=" font-['Poppins'] bg-black flex min-h-screen overflow-none items-center">
+      <main
+        onMouseMove={onMouseMove}
+        className=" relative font-['Poppins'] bg-black flex min-h-screen items-center overflow-hidden ">
         <div className=" flex items-center min-w-full min-h-full justify-between p-10">
-          <h1 className="text-white text-6xl w-2/3">I am a {text}</h1>
-          <img className="w-1/3 rounded-full" src={me} alt="" />
+          <h1 className="text-white text-6xl w-2/3">
+            I am a {''}
+            <span className="text-6xl" style={style}>
+              {text}
+            </span>
+          </h1>
+          <img className="w-1/3 rounded-full " src={me} alt="" />
         </div>
       </main>
+      <motion.div
+        animate={{
+          x: clientX - 100,
+          y: clientY - 100,
+          rotate: 360,
+          scale: [1, 1.4, 1],
+        }}
+        transition={{
+          duration: 5,
+          ease: 'circOut',
+          repeat: Infinity,
+        }}
+        className="fixed top-0 left-0 overflow-hidden"
+        style={blobDesign}></motion.div>
     </>
   );
 };
