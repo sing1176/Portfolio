@@ -1,102 +1,73 @@
 import React from 'react';
 import '../index.css';
+import me from '../assets/me.jpg';
 const Home = () => {
-	return (
-		<>
-			<main className="w-full height-screen  text-white font-mono ">
-				<div className="headerText">
-					<div class=" my-40 text-center text-2xl md:text-3xl lg:text-4xl ">
-						<h1 className="">
-							Welcome to my Portfolio
-						</h1>
-						<h2 class="my-6 px-4">
-							I am a Full Stack developer and UI/UX Designer.
-						</h2>
-					</div>
-				</div>
-				<div className="skill text-center">
-					<div>
-						<h3 className="bg-gray-700/40 p-2 my-2 mx-12 rounded-md text-2xl">
-							Current Skill Set
-						</h3>
-					</div>
+  const options = [
+    'Full Stack Developer',
+    'UI/UX Designer',
+    'Freelancer',
+    'Photographer',
+  ];
+  const [current, setCurrent] = React.useState(0);
+  const length = options.length;
+  const [text, setText] = React.useState('');
+  const [isDeleting, setIsDeleting] = React.useState(false);
+  const [loopNum, setLoopNum] = React.useState(0);
+  const [typingSpeed, setTypingSpeed] = React.useState(150);
 
-					<div class=" mx-12 grid md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-7 py-5">
-						<div className="languages bg-gray-700/20 rounded-md p-2 ">
-							<h1 className="text-xl underline my-3 bg-gray-700/10 rounded-md ">
-								Languages
-							</h1>
-							<ul className="px-2 ">
-								<li>Javascript</li>
-								<li>Java</li>
-								<li>C++</li>
-								<li>C#</li>
-							</ul>
-						</div>
-						<div className="languages bg-gray-700/20 rounded-md p-2 ">
-							<h1 className="text-xl underline my-3 bg-gray-700/10 rounded-md ">
-								Web
-							</h1>
-							<ul className="px-2">
-								<li>SPAs</li>
-								<li>PWAs</li>
-								<li>Html</li>
-								<li>Css</li>
-								<li>Sass</li>
-								<li>WordPress</li>
-							</ul>
-						</div>
-						<div className="languages bg-gray-700/20 rounded-md p-2 ">
-							<h1 className="text-xl underline my-3 bg-gray-700/10 rounded-md ">
-								Frameworks
-							</h1>
-							<ul className="px-2">
-								<li>React</li>
-								<li>ReactNative</li>
-								<li>Bootstrap</li>
-								<li>Tailwind</li>
-								<li>MUI</li>
-								<li>Next</li>
-							</ul>
-						</div>
-						<div className="languages bg-gray-700/20 rounded-md p-2 ">
-							<h1 className="text-xl underline my-3 bg-gray-700/10 rounded-md ">
-								Mobile
-							</h1>
-							<ul className="px-2">
-								<li>Kotlin</li>
-								<li>Swift</li>
-								<li>Cordova</li>
-							</ul>
-						</div>
-						<div className="languages bg-gray-700/20 rounded-md p-2 ">
-							<h1 className="text-xl underline my-3 bg-gray-700/10 rounded-md ">
-								BackEnd
-							</h1>
-							<ul className="px-2">
-								<li>Node.js</li>
-								<li>Firestore</li>
-								<li>Express</li>
-								<li>Docker</li>
-								<li>AWS</li>
-							</ul>
-						</div>
-						<div className="languages bg-gray-700/20 rounded-md p-2 ">
-							<h1 className="text-xl underline my-3 bg-gray-700/10 rounded-md ">
-								Others
-							</h1>
-							<ul className="px-2">
-								<li>Content Creator</li>
-								<li>Social Media Management</li>
-								<li>Photographer/Videographer</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</main>
-		</>
-	);
+  React.useEffect(() => {
+    const lastIndex = length - 1;
+    if (current < 0) {
+      setCurrent(lastIndex);
+    }
+    if (current > lastIndex) {
+      setCurrent(0);
+    }
+  }, [current, length]);
+
+  React.useEffect(() => {
+    let slider = setInterval(() => {
+      setCurrent(current + 1);
+    }, 3000);
+    return () => clearInterval(slider);
+  }, [current]);
+
+  React.useEffect(() => {
+    const handleType = () => {
+      const i = loopNum % options.length;
+      const fullText = options[i];
+
+      setText(
+        isDeleting
+          ? fullText.substring(0, text.length - 1)
+          : fullText.substring(0, text.length + 1)
+      );
+
+      setTypingSpeed(isDeleting ? 30 : 150);
+
+      if (!isDeleting && text === fullText) {
+        setTimeout(() => setIsDeleting(true), 500);
+      } else if (isDeleting && text === '') {
+        setIsDeleting(false);
+        setLoopNum(loopNum + 1);
+      }
+    };
+
+    const timeout = setTimeout(handleType, typingSpeed);
+
+    return () => clearTimeout(timeout);
+  }, [text, isDeleting, loopNum]);
+
+  return (
+    <>
+      <main className=" font-['Poppins'] bg-black flex min-h-screen overflow-none items-center">
+        <div className=" flex items-center min-w-full min-h-full justify-between p-10">
+          <h1 className="text-white text-6xl w-2/3">I am a {text}</h1>
+          <img className="w-1/3 rounded-full" src={me} alt="" />
+        </div>
+      </main>
+    </>
+  );
 };
 
 export default Home;
-
