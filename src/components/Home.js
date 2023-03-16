@@ -2,6 +2,7 @@ import React from 'react';
 import '../index.css';
 import me from '../assets/me.jpg';
 import { motion } from 'framer-motion';
+import BottomMenu from './BottomMenu';
 const Home = () => {
   const options = [
     'Full Stack Developer',
@@ -82,10 +83,10 @@ const Home = () => {
 
   return (
     <>
-      <main
+      <div
         onMouseMove={onMouseMove}
-        className=" relative font-['Poppins'] bg-black flex min-h-screen items-center overflow-hidden ">
-        <div className=" flex items-center min-w-full min-h-full justify-between p-10">
+        className=" font-['Poppins'] bg-black flex min-h-screen items-center overflow-hidden ">
+        <div className="relative  flex items-center min-w-full min-h-full justify-between p-10">
           <h1 className="text-white text-6xl w-2/3">
             I am a {''}
             <span className="text-6xl" style={style}>
@@ -94,7 +95,9 @@ const Home = () => {
           </h1>
           <img className="w-1/3 rounded-full " src={me} alt="" />
         </div>
-      </main>
+      </div>
+
+      <BottomMenu />
       <motion.div
         animate={{
           x: clientX - 100,
