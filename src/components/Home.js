@@ -86,14 +86,24 @@ const Home = () => {
       <div
         onMouseMove={onMouseMove}
         className=" font-['Poppins'] bg-black flex min-h-screen items-center overflow-hidden ">
-        <div className="relative  flex items-center min-w-full min-h-full justify-between p-10">
-          <h1 className="text-white text-6xl w-2/3">
+        <div className="relative flex items-center min-w-full min-h-full justify-between p-10 z-20">
+          <h1 className="text-white text-6xl ">
             I am a {''}
             <span className="text-6xl" style={style}>
               {text}
             </span>
           </h1>
-          <img className="w-1/3 rounded-full " src={me} alt="" />
+          <motion.div
+            whileHover={{
+              scale: [1, 1.5, 1],
+              transition: { duration: 1.5 },
+            }}
+            whileTap={{
+              scale: 0.8,
+            }}
+            className="w-1/3 ">
+            <img className="rounded-full z-20 " src={me} alt="" />
+          </motion.div>
         </div>
       </div>
 
