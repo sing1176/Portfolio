@@ -33,6 +33,7 @@ const BottomMenu = () => {
               <SocialIcon
                 key={index}
                 url={icon.url}
+                fgColor="white"
                 style={{
                   height: 40,
                   width: 40,

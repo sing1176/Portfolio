@@ -106,7 +106,6 @@ const Home = () => {
           </motion.div>
         </div>
       </div>
-
       <BottomMenu />
       <motion.div
         animate={{
