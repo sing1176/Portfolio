@@ -86,7 +86,7 @@ const Home = () => {
       <div
         onMouseMove={onMouseMove}
         className=" font-['Poppins'] bg-black flex min-h-screen items-center overflow-hidden ">
-        <div className="relative flex items-center min-w-full min-h-full justify-between p-10 z-20">
+        <div className="relative flex items-center min-w-full min-h-full justify-between p-10 z-20 ">
           <h1 className="text-white text-6xl ">
             I am a {''}
             <span className="text-6xl" style={style}>

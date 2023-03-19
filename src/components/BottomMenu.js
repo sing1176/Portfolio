@@ -9,18 +9,22 @@ const BottomMenu = () => {
     {
       url: 'https://www.linkedin.com/in/sandeepsaini2213/',
       icon: 'linkedin',
+      key: 1,
     },
     {
       url: 'https://github.com/sing1176/',
       icon: 'github',
+      key: 2,
     },
     {
       url: 'https://www.instagram.com/journeyvialens/',
       icon: 'instagram',
+      key: 3,
     },
     {
       url: 'https://twitter.com/journeyvialens/',
       icon: 'twitter',
+      key: 4,
     },
   ];
 
@@ -29,7 +33,7 @@ const BottomMenu = () => {
       <div className="flex flex-row gap-4 z-20">
         {iconlist.map((icon, index) => {
           return (
-            <motion.button>
+            <motion.button key={index}>
               <SocialIcon
                 key={index}
                 url={icon.url}
@@ -56,6 +60,7 @@ const BottomMenu = () => {
       opacity: 1,
       x: -200,
       rotate: 0,
+      backgroundColor: 'white',
     },
   };
 
@@ -80,15 +85,20 @@ const BottomMenu = () => {
         transition={{ duration: 0.5 }}>
         <Icons />
       </motion.div>
+
       <motion.button
         variants={variants}
         initial={false}
         animate={isOpen ? 'open' : 'closed'}
         transition={{ duration: 0.5, ease: 'easeInOut' }}
         onClick={handleButtonClick}
-        whileHover={{ scale: 1.5 }}
+        whileHover={{
+          scale: 1.5,
+          backgroundColor: 'black',
+          color: 'white',
+        }}
         whileTap={{ scale: 0.9 }}
-        className="bg-white rounded-full p-2">
+        className="rounded-full p-2 transition-colors duration-500">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
