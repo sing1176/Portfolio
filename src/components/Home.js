@@ -82,10 +82,12 @@ const Home = () => {
       <div
         onMouseMove={onMouseMove}
         className=" font-['Poppins'] bg-black flex min-h-full w-screen items-center overflow-hidden z-20 ">
+        {/* content */}
         <div
           className=" relative flex md:flex-row flex-col-reverse w-full items-center p-10
-min-h-screen justify-between ">
-          <div className="w-full mb-20 pb-20 md:mb-0 md:pb-0 md:w-1/2 ">
+min-h-screen justify-end z-20 ">
+          {/* text */}
+          <div className="w-full mt-20 md:mb-0 md:pb-0 md:w-1/2 ">
             <h1 className="text-white lg:text-6xl text-4xl">
               I am a {''}
               <span className="text-inherit" style={style}>
@@ -93,6 +95,7 @@ min-h-screen justify-between ">
               </span>
             </h1>
           </div>
+          {/* image */}
           <motion.div
             whileHover={{
               scale: [1, 1.5, 1],
@@ -101,7 +104,7 @@ min-h-screen justify-between ">
             whileTap={{
               scale: 0.8,
             }}
-            className="mt-20 md:mt-0 md:w-1/2 ">
+            className="md:w-1/2 ">
             <img className="rounded-full " src={me} alt="" />
           </motion.div>
         </div>

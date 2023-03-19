@@ -1,11 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { SocialIcon } from 'react-social-icons';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const BottomMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
-  
+
   const iconlist = [
     {
       url: 'https://www.linkedin.com/in/sandeepsaini2213/',
@@ -76,9 +76,12 @@ const BottomMenu = () => {
 
   const handleButtonClick = () => {
     setIsOpen(!isOpen);
+    setTimeout(() => {
+      setIsOpen(false);
+    }, 3000);
   };
   return (
-    <motion.div className="flex items-center gap-4 absolute bottom-10 left-5 z-20">
+    <motion.div className="flex items-center gap-4 absolute bottom-10 left-5 z-30">
       <motion.div
         variants={socialIconVariants}
         initial={false}
