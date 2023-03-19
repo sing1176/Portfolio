@@ -86,10 +86,10 @@ const Home = () => {
       <div
         onMouseMove={onMouseMove}
         className=" font-['Poppins'] bg-black flex min-h-screen items-center overflow-hidden ">
-        <div className="relative flex items-center min-w-full min-h-full justify-between p-10 z-20 ">
-          <h1 className="text-white text-6xl ">
+        <div className=" relative flex  lg:flex-row flex-col-reverse items-center w-full justify-between p-10 z-20 ">
+          <h1 className="text-white lg:text-6xl text-4xl w-2/3">
             I am a {''}
-            <span className="text-6xl" style={style}>
+            <span className="text-inherit" style={style}>
               {text}
             </span>
           </h1>
@@ -107,7 +107,7 @@ const Home = () => {
         </div>
       </div>
       <BottomMenu />
-      <motion.div
+      {/* <motion.div
         animate={{
           x: clientX - 100,
           y: clientY - 100,
@@ -120,7 +120,7 @@ const Home = () => {
           repeat: Infinity,
         }}
         className="fixed top-0 left-0 overflow-hidden"
-        style={blobDesign}></motion.div>
+        style={blobDesign}></motion.div> */}
     </>
   );
 };
