@@ -81,14 +81,18 @@ const Home = () => {
       {/*  Main Content */}
       <div
         onMouseMove={onMouseMove}
-        className=" font-['Poppins'] bg-black flex min-h-screen items-center overflow-hidden ">
-        <div className=" relative flex  lg:flex-row flex-col-reverse items-center w-full justify-between p-10 z-20 ">
-          <h1 className="text-white lg:text-6xl text-4xl w-2/3">
-            I am a {''}
-            <span className="text-inherit" style={style}>
-              {text}
-            </span>
-          </h1>
+        className=" font-['Poppins'] bg-black flex min-h-full w-screen items-center overflow-hidden z-20 ">
+        <div
+          className=" relative flex md:flex-row flex-col-reverse w-full items-center p-10
+min-h-screen justify-between ">
+          <div className="w-full mb-20 pb-20 md:mb-0 md:pb-0 md:w-1/2 ">
+            <h1 className="text-white lg:text-6xl text-4xl">
+              I am a {''}
+              <span className="text-inherit" style={style}>
+                {text}
+              </span>
+            </h1>
+          </div>
           <motion.div
             whileHover={{
               scale: [1, 1.5, 1],
@@ -97,8 +101,8 @@ const Home = () => {
             whileTap={{
               scale: 0.8,
             }}
-            className="w-1/3 ">
-            <img className="rounded-full z-20 " src={me} alt="" />
+            className="mt-20 md:mt-0 md:w-1/2 ">
+            <img className="rounded-full " src={me} alt="" />
           </motion.div>
         </div>
       </div>
