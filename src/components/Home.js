@@ -3,21 +3,23 @@ import '../index.css';
 import me from '../assets/me.jpg';
 import { motion } from 'framer-motion';
 import BottomMenu from './BottomMenu';
+
 const Home = () => {
+  const [mouseCoords, setMouseCoords] = React.useState({ x: 0, y: 0 });
+
   const options = [
     'Full Stack Developer',
     'UI/UX Designer',
     'Freelancer',
     'Photographer',
   ];
+
   const [current, setCurrent] = React.useState(0);
   const length = options.length;
   const [text, setText] = React.useState('');
   const [isDeleting, setIsDeleting] = React.useState(false);
   const [loopNum, setLoopNum] = React.useState(0);
   const [typingSpeed, setTypingSpeed] = React.useState(150);
-  const [clientX, setClientX] = React.useState(0);
-  const [clientY, setClientY] = React.useState(0);
 
   React.useEffect(() => {
     const lastIndex = length - 1;
@@ -40,15 +42,12 @@ const Home = () => {
     const handleType = () => {
       const i = loopNum % options.length;
       const fullText = options[i];
-
       setText(
         isDeleting
           ? fullText.substring(0, text.length - 1)
           : fullText.substring(0, text.length + 1)
       );
-
       setTypingSpeed(isDeleting ? 30 : 150);
-
       if (!isDeleting && text === fullText) {
         setTimeout(() => setIsDeleting(true), 500);
       } else if (isDeleting && text === '') {
@@ -56,9 +55,7 @@ const Home = () => {
         setLoopNum(loopNum + 1);
       }
     };
-
     const timeout = setTimeout(handleType, typingSpeed);
-
     return () => clearTimeout(timeout);
   }, [text, isDeleting, loopNum]);
 
@@ -76,13 +73,12 @@ const Home = () => {
   };
 
   const onMouseMove = (e) => {
-    const { clientX, clientY } = e;
-    setClientX(clientX);
-    setClientY(clientY);
+    setMouseCoords({ x: e.clientX, y: e.clientY });
   };
 
   return (
     <>
+      {/*  Main Content */}
       <div
         onMouseMove={onMouseMove}
         className=" font-['Poppins'] bg-black flex min-h-screen items-center overflow-hidden ">
@@ -106,11 +102,13 @@ const Home = () => {
           </motion.div>
         </div>
       </div>
+      {/*  Bottom Menu */}
       <BottomMenu />
-      {/* <motion.div
+      {/*  Blob */}
+      <motion.div
         animate={{
-          x: clientX - 100,
-          y: clientY - 100,
+          x: mouseCoords.x,
+          y: mouseCoords.y,
           rotate: 360,
           scale: [1, 1.4, 1],
         }}
@@ -120,7 +118,7 @@ const Home = () => {
           repeat: Infinity,
         }}
         className="fixed top-0 left-0 overflow-hidden"
-        style={blobDesign}></motion.div> */}
+        style={blobDesign}></motion.div>
     </>
   );
 };
