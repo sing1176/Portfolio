@@ -3,7 +3,8 @@ import ThemeContext from './ThemeContext';
 import { motion } from 'framer-motion';
 
 const ThemeButton = () => {
-  const [theme, setTheme] = React.useState('dark');
+
+  const { theme, toggleTheme } = React.useContext(ThemeContext);
 
   const handleClick = (e) => {
     const target = e.currentTarget.name;
@@ -11,7 +12,7 @@ const ThemeButton = () => {
       console.log('same theme');
       return;
     } else {
-      setTheme(target);
+      toggleTheme(target);
     }
   };
 
@@ -31,7 +32,7 @@ const ThemeButton = () => {
   return (
     <motion.div
       whileHover={{ opacity: 1 }}
-      className="relative flex flex-row gap-6 bg-slate-300 rounded-full items-center p-2 opacity-20">
+      className="relative flex flex-row gap-6  rounded-full items-center p-2 opacity-20 bg-gray-400 ">
       {/* buttons */}
 
       <button onClick={handleClick} name="light" className="z-10">

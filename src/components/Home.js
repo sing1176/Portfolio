@@ -4,8 +4,11 @@ import me from '../assets/me.jpg';
 import { motion } from 'framer-motion';
 import BottomMenu from './BottomMenu';
 import ThemeButton from './ThemeButton';
+import ThemeContext from './ThemeContext';
 
 const Home = () => {
+  const { theme } = React.useContext(ThemeContext);
+
   const [mouseCoords, setMouseCoords] = React.useState({ x: 0, y: 0 });
 
   const options = [
@@ -77,22 +80,28 @@ const Home = () => {
     setMouseCoords({ x: e.clientX, y: e.clientY });
   };
 
+  const backgroundColor = theme === 'light' ? 'bg-gray-200' : 'bg-black';
+  const textColor = theme === 'light' ? 'text-black' : 'text-white';
+
   return (
     <>
       {/*  Main Content */}
       <div
         onMouseMove={onMouseMove}
-        className=" font-['Poppins'] bg-black flex min-h-full w-screen items-center overflow-hidden z-20 ">
+        className={
+          "font-['Poppins'] flex min-h-full w-screen items-center overflow-hidden z-20 " +
+          backgroundColor
+        }>
         {/* content */}
-        <div className="absolute top-10 right-10 z-40">
+        <div className="absolute top-4 right-4 z-40">
           <ThemeButton />
         </div>
         <div
           className=" relative flex md:flex-row flex-col-reverse w-full items-center p-10
-min-h-screen justify-end z-20 ">
+min-h-screen justify-between z-20 ">
           {/* text */}
           <div className="w-full mt-20 md:mb-0 md:pb-0 md:w-1/2 ">
-            <h1 className="text-white lg:text-6xl text-4xl">
+            <h1 className={'lg:text-6xl text-4xl ' + textColor}>
               I am a {''}
               <span className="text-inherit" style={style}>
                 {text}
