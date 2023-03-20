@@ -3,6 +3,7 @@ import '../index.css';
 import me from '../assets/me.jpg';
 import { motion } from 'framer-motion';
 import BottomMenu from './BottomMenu';
+import ThemeButton from './ThemeButton';
 
 const Home = () => {
   const [mouseCoords, setMouseCoords] = React.useState({ x: 0, y: 0 });
@@ -83,6 +84,9 @@ const Home = () => {
         onMouseMove={onMouseMove}
         className=" font-['Poppins'] bg-black flex min-h-full w-screen items-center overflow-hidden z-20 ">
         {/* content */}
+        <div className="absolute top-10 right-10 z-40">
+          <ThemeButton />
+        </div>
         <div
           className=" relative flex md:flex-row flex-col-reverse w-full items-center p-10
 min-h-screen justify-end z-20 ">
@@ -104,7 +108,7 @@ min-h-screen justify-end z-20 ">
             whileTap={{
               scale: 0.8,
             }}
-            className="md:w-1/2 ">
+            className="md:w-1/3 ">
             <img className="rounded-full " src={me} alt="" />
           </motion.div>
         </div>
