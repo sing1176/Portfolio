@@ -1,12 +1,13 @@
 module.exports = {
-	content: ['./src/**/*.{js,jsx,ts,tsx}'],
-	theme: {
-		extend: {
-			backgroundImage: {
-				'background': "url('./assets/background.gif')",
-			},
-		},
-	},
-	plugins: [],
+  content: ['./src/**/*.{js,jsx,ts,tsx}'],
+  theme: {
+    extend: {
+      darkMode: false,
+      fontFamily: {
+        poppins: ['Poppins', 'sans-serif'],
+      },
+    },
+  },
+  plugins: [],
 };
 	

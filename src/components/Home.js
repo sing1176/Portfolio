@@ -1,102 +1,146 @@
 import React from 'react';
 import '../index.css';
-const Home = () => {
-	return (
-		<>
-			<main className="w-full height-screen  text-white font-mono ">
-				<div className="headerText">
-					<div class=" my-40 text-center text-2xl md:text-3xl lg:text-4xl ">
-						<h1 className="">
-							Welcome to my Portfolio
-						</h1>
-						<h2 class="my-6 px-4">
-							I am a Full Stack developer and UI/UX Designer.
-						</h2>
-					</div>
-				</div>
-				<div className="skill text-center">
-					<div>
-						<h3 className="bg-gray-700/40 p-2 my-2 mx-12 rounded-md text-2xl">
-							Current Skill Set
-						</h3>
-					</div>
+import me from '../assets/me.jpg';
+import { motion } from 'framer-motion';
+import BottomMenu from './BottomMenu';
+import ThemeButton from './ThemeButton';
+import ThemeContext from './ThemeContext';
 
-					<div class=" mx-12 grid md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-7 py-5">
-						<div className="languages bg-gray-700/20 rounded-md p-2 ">
-							<h1 className="text-xl underline my-3 bg-gray-700/10 rounded-md ">
-								Languages
-							</h1>
-							<ul className="px-2 ">
-								<li>Javascript</li>
-								<li>Java</li>
-								<li>C++</li>
-								<li>C#</li>
-							</ul>
-						</div>
-						<div className="languages bg-gray-700/20 rounded-md p-2 ">
-							<h1 className="text-xl underline my-3 bg-gray-700/10 rounded-md ">
-								Web
-							</h1>
-							<ul className="px-2">
-								<li>SPAs</li>
-								<li>PWAs</li>
-								<li>Html</li>
-								<li>Css</li>
-								<li>Sass</li>
-								<li>WordPress</li>
-							</ul>
-						</div>
-						<div className="languages bg-gray-700/20 rounded-md p-2 ">
-							<h1 className="text-xl underline my-3 bg-gray-700/10 rounded-md ">
-								Frameworks
-							</h1>
-							<ul className="px-2">
-								<li>React</li>
-								<li>ReactNative</li>
-								<li>Bootstrap</li>
-								<li>Tailwind</li>
-								<li>MUI</li>
-								<li>Next</li>
-							</ul>
-						</div>
-						<div className="languages bg-gray-700/20 rounded-md p-2 ">
-							<h1 className="text-xl underline my-3 bg-gray-700/10 rounded-md ">
-								Mobile
-							</h1>
-							<ul className="px-2">
-								<li>Kotlin</li>
-								<li>Swift</li>
-								<li>Cordova</li>
-							</ul>
-						</div>
-						<div className="languages bg-gray-700/20 rounded-md p-2 ">
-							<h1 className="text-xl underline my-3 bg-gray-700/10 rounded-md ">
-								BackEnd
-							</h1>
-							<ul className="px-2">
-								<li>Node.js</li>
-								<li>Firestore</li>
-								<li>Express</li>
-								<li>Docker</li>
-								<li>AWS</li>
-							</ul>
-						</div>
-						<div className="languages bg-gray-700/20 rounded-md p-2 ">
-							<h1 className="text-xl underline my-3 bg-gray-700/10 rounded-md ">
-								Others
-							</h1>
-							<ul className="px-2">
-								<li>Content Creator</li>
-								<li>Social Media Management</li>
-								<li>Photographer/Videographer</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</main>
-		</>
-	);
+const Home = () => {
+  const { theme } = React.useContext(ThemeContext);
+
+  const [mouseCoords, setMouseCoords] = React.useState({ x: 0, y: 0 });
+
+  const options = [
+    'Full Stack Developer',
+    'UI/UX Designer',
+    'Freelancer',
+    'Photographer',
+  ];
+
+  const [current, setCurrent] = React.useState(0);
+  const length = options.length;
+  const [text, setText] = React.useState('');
+  const [isDeleting, setIsDeleting] = React.useState(false);
+  const [loopNum, setLoopNum] = React.useState(0);
+  const [typingSpeed, setTypingSpeed] = React.useState(150);
+
+  React.useEffect(() => {
+    const lastIndex = length - 1;
+    if (current < 0) {
+      setCurrent(lastIndex);
+    }
+    if (current > lastIndex) {
+      setCurrent(0);
+    }
+  }, [current, length]);
+
+  React.useEffect(() => {
+    let slider = setInterval(() => {
+      setCurrent(current + 1);
+    }, 3000);
+    return () => clearInterval(slider);
+  }, [current]);
+
+  React.useEffect(() => {
+    const handleType = () => {
+      const i = loopNum % options.length;
+      const fullText = options[i];
+      setText(
+        isDeleting
+          ? fullText.substring(0, text.length - 1)
+          : fullText.substring(0, text.length + 1)
+      );
+      setTypingSpeed(isDeleting ? 30 : 150);
+      if (!isDeleting && text === fullText) {
+        setTimeout(() => setIsDeleting(true), 500);
+      } else if (isDeleting && text === '') {
+        setIsDeleting(false);
+        setLoopNum(loopNum + 1);
+      }
+    };
+    const timeout = setTimeout(handleType, typingSpeed);
+    return () => clearTimeout(timeout);
+  }, [text, isDeleting, loopNum]);
+
+  const style = {
+    background: 'linear-gradient(90deg, #FF008C 0%, #FF8C00 100%)',
+    WebkitBackgroundClip: 'text',
+    WebkitTextFillColor: 'transparent',
+  };
+
+  const blobDesign = {
+    background: 'linear-gradient(to right, pink, purple)',
+    height: '200px',
+    width: '200px',
+    filter: 'blur(80px)',
+  };
+
+  const onMouseMove = (e) => {
+    setMouseCoords({ x: e.clientX, y: e.clientY });
+  };
+
+  const backgroundColor = theme === 'light' ? 'bg-gray-200' : 'bg-black';
+  const textColor = theme === 'light' ? 'text-black' : 'text-white';
+
+  return (
+    <>
+      {/*  Main Content */}
+      <div
+        onMouseMove={onMouseMove}
+        className={
+          "font-['Poppins'] flex min-h-full w-screen items-center overflow-hidden z-20 " +
+          backgroundColor
+        }>
+        {/* content */}
+        <div className="absolute top-4 right-4 z-40">
+          <ThemeButton />
+        </div>
+        <div
+          className=" relative flex md:flex-row flex-col-reverse w-full items-center p-10
+min-h-screen justify-between z-20 ">
+          {/* text */}
+          <div className="w-full mt-20 md:mb-0 md:pb-0 md:w-1/2 ">
+            <h1 className={'lg:text-6xl text-4xl ' + textColor}>
+              I am a {''}
+              <span className="text-inherit" style={style}>
+                {text}
+              </span>
+            </h1>
+          </div>
+          {/* image */}
+          <motion.div
+            whileHover={{
+              scale: [1, 1.5, 1],
+              transition: { duration: 1.5 },
+            }}
+            whileTap={{
+              scale: 0.8,
+            }}
+            className="md:w-1/3 ">
+            <img className="rounded-full " src={me} alt="" />
+          </motion.div>
+        </div>
+      </div>
+      {/*  Bottom Menu */}
+      <BottomMenu />
+      {/*  Blob */}
+      <motion.div
+        animate={{
+          x: mouseCoords.x,
+          y: mouseCoords.y,
+          rotate: 360,
+          scale: [1, 1.4, 1],
+        }}
+        transition={{
+          duration: 5,
+          ease: 'circOut',
+          repeat: Infinity,
+        }}
+        className="fixed top-0 left-0 overflow-hidden"
+        style={blobDesign}></motion.div>
+    </>
+  );
 };
 
 export default Home;
-
