@@ -93,7 +93,7 @@ const Home = () => {
           backgroundColor
         }>
         {/* content */}
-        <div className="absolute top-4 right-4 z-40">
+        <div className="absolute bottom-4 right-4 md:top-4 md:right-4 z-40">
           <ThemeButton />
         </div>
         <div
