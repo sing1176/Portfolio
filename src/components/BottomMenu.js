@@ -76,10 +76,8 @@ const BottomMenu = () => {
 
   const handleButtonClick = () => {
     setIsOpen(!isOpen);
-    setTimeout(() => {
-      setIsOpen(false);
-    }, 3000);
   };
+
   return (
     <motion.div
       whileHover={{ opacity: 1 }}
