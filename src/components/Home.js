@@ -98,7 +98,7 @@ const Home = () => {
         </div>
         <div
           className=" relative flex md:flex-row flex-col-reverse w-full items-center p-10
-min-h-screen justify-between z-20 ">
+min-h-screen justify-end md:justify-between z-20 ">
           {/* text */}
           <div className="w-full mt-20 md:mb-0 md:pb-0 md:w-1/2 ">
             <h1 className={'lg:text-6xl text-4xl ' + textColor}>
