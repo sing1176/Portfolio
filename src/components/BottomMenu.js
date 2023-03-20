@@ -82,7 +82,7 @@ const BottomMenu = () => {
     <motion.div
       whileHover={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className="flex items-center gap-4 absolute bottom-4  left-1  md:bottom-10 z-30 opacity-20">
+      className="flex items-center gap-4 absolute bottom-4  left-1  md:bottom-10 z-30 md:opacity-20">
       <motion.div
         variants={socialIconVariants}
         initial={false}
