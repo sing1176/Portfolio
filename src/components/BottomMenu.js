@@ -13,18 +13,19 @@ const BottomMenu = () => {
       key: 1,
     },
     {
-      url: 'https://github.com/sing1176/',
-      icon: 'github',
+      url: 'https://dribbble.com/deepsaini2213',
+      icon: 'dribbble',
       key: 2,
     },
     {
-      url: 'https://www.instagram.com/journeyvialens/',
-      icon: 'instagram',
+      url: 'https://github.com/sing1176/',
+      icon: 'github',
       key: 3,
     },
+
     {
-      url: 'https://twitter.com/journeyvialens/',
-      icon: 'twitter',
+      url: 'https://www.instagram.com/journeyvialens/',
+      icon: 'instagram',
       key: 4,
     },
   ];
