@@ -5,6 +5,7 @@ import ThemeButton from './ThemeButton';
 import ThemeContext from './ThemeContext';
 import me from '../assets/me.jpg';
 import BottomMenu from './BottomMenu';
+import Blob from './Blob';
 
 const Home = () => {
   const { theme } = useContext(ThemeContext);
@@ -68,13 +69,6 @@ const Home = () => {
     WebkitTextFillColor: 'transparent',
   };
 
-  const blobDesign = {
-    background: 'linear-gradient(to right, pink, purple)',
-    height: '200px',
-    width: '200px',
-    filter: 'blur(80px)',
-  };
-
   const onMouseMove = (e) => {
     setMouseCoords({ x: e.clientX, y: e.clientY });
   };
@@ -135,23 +129,8 @@ const Home = () => {
           </motion.div>
         </div>
       </div>
-
       <BottomMenu />
-
-      <motion.div
-        animate={{
-          x: mouseCoords.x,
-          y: mouseCoords.y,
-          rotate: 360,
-          scale: [1, 1.4, 1],
-        }}
-        transition={{
-          duration: 5,
-          ease: 'circOut',
-          repeat: Infinity,
-        }}
-        className="fixed top-0 left-0 overflow-hidden"
-        style={blobDesign}></motion.div>
+      <Blob mouseCoords={mouseCoords} />
     </>
   );
 };
