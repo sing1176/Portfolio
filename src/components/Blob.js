@@ -12,8 +12,8 @@ const Blob = ({ mouseCoords }) => {
   return (
     <motion.div
       animate={{
-        x: mouseCoords.x - 100,
-        y: mouseCoords.y - 100,
+        x: mouseCoords.x,
+        y: mouseCoords.y,
         rotate: 360,
         scale: [1, 1.4, 1],
       }}

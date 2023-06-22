@@ -1,11 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
-import ThemeButton from './ThemeButton';
 import ThemeContext from './ThemeContext';
 import me from '../assets/me.jpg';
 import BottomMenu from './BottomMenu';
 import Blob from './Blob';
+import Nav from './Nav';
 
 const Home = () => {
   const { theme } = useContext(ThemeContext);
@@ -73,39 +72,17 @@ const Home = () => {
     setMouseCoords({ x: e.clientX, y: e.clientY });
   };
 
-  const buttonVariants = {
-    hover: {
-      scale: 1.1,
-      transition: { duration: 0.3 },
-    },
-    pressed: {
-      scale: 0.9,
-    },
-  };
-
   const backgroundColor = theme === 'light' ? 'bg-gray-200' : 'bg-black';
   const textColor = theme === 'light' ? 'text-black' : 'text-white';
 
   return (
     <>
+      <div className="absolute bottom-4 right-4 md:top-4 md:right-4 z-40">
+        <Nav />
+      </div>
       <div
         onMouseMove={onMouseMove}
         className={`font-Poppins flex min-h-screen w-screen items-center overflow-hidden ${backgroundColor}`}>
-        <div className="absolute bottom-4 right-4 md:top-4 md:right-4 z-40">
-          <div className="flex flex-row">
-            <Link to="/projects">
-              <motion.button
-                variants={buttonVariants}
-                whileHover="hover"
-                whileTap="pressed"
-                className={`text-white font-bold py-2 px-4 rounded ml-2 ${backgroundColor}`}>
-                Projects
-              </motion.button>
-            </Link>
-            <ThemeButton />
-          </div>
-        </div>
-
         <div className="relative flex md:flex-row flex-col-reverse w-full items-center p-10 min-h-screen justify-end md:justify-between z-20">
           <div className="w-full mt-20 md:mb-0 md:pb-0 md:w-1/2">
             <h1 className={`lg:text-6xl text-4xl ${textColor}`}>
