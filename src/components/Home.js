@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import BottomMenu from './BottomMenu';
 import ThemeButton from './ThemeButton';
 import ThemeContext from './ThemeContext';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
   const { theme } = React.useContext(ThemeContext);
@@ -80,6 +81,16 @@ const Home = () => {
     setMouseCoords({ x: e.clientX, y: e.clientY });
   };
 
+  const buttonVariants = {
+    hover: {
+      scale: 1.1,
+      transition: { duration: 0.3 },
+    },
+    pressed: {
+      scale: 0.9,
+    },
+  };
+
   const backgroundColor = theme === 'light' ? 'bg-gray-200' : 'bg-black';
   const textColor = theme === 'light' ? 'text-black' : 'text-white';
 
@@ -94,7 +105,18 @@ const Home = () => {
         }>
         {/* content */}
         <div className="absolute bottom-4 right-4 md:top-4 md:right-4 z-40">
-          <ThemeButton />
+          <div className="flex flex-row">
+            <Link to="/projects">
+              <motion.button
+                variants={buttonVariants}
+                whileHover="hover"
+                whileTap="pressed"
+                className=" text-white font-bold py-2 px-4 rounded ml-2">
+                Projects
+              </motion.button>
+            </Link>
+            <ThemeButton />
+          </div>
         </div>
         <div
           className=" relative flex md:flex-row flex-col-reverse w-full items-center p-10
@@ -122,9 +144,7 @@ min-h-screen justify-end md:justify-between z-20 ">
           </motion.div>
         </div>
       </div>
-      {/*  Bottom Menu */}
       <BottomMenu />
-      {/*  Blob */}
       <motion.div
         animate={{
           x: mouseCoords.x,
