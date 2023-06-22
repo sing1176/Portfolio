@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import ThemeButton from './ThemeButton';
@@ -33,14 +33,22 @@ const Projects = () => {
     setMouseCoords({ x: e.clientX, y: e.clientY });
   };
 
+  useEffect(() => {
+    // Add any additional logic or side effects here
+    // ...
+
+    // Clean up any subscriptions or intervals in the cleanup function
+    return () => {
+      // Cleanup logic here
+      // ...
+    };
+  }, []);
+
   return (
     <>
       <div
-        className={
-          "font-['Poppins'] flex min-h-full w-screen items-center overflow-hidden z-20 " +
-          backgroundColor
-        }>
-        {/* Navigation and Theme Button */}
+        className={`font-Poppins flex min-h-screen w-screen items-center overflow-hidden ${backgroundColor}`}
+        onMouseMove={onMouseMove}>
         <div className="absolute bottom-4 right-4 md:top-4 md:right-4 z-40">
           <div className="flex flex-row">
             <Link to="/">
@@ -55,12 +63,13 @@ const Projects = () => {
             <ThemeButton />
           </div>
         </div>
-        {/* Projects */}
+
+        {/* Add your Projects content here */}
       </div>
-      {/* Bottom Menu */}
-      {/* <BottomMenu /> */}
-      {/* Blob */}
-      {/* <motion.div
+
+      <BottomMenu />
+
+      <motion.div
         animate={{
           x: mouseCoords.x,
           y: mouseCoords.y,
@@ -73,8 +82,7 @@ const Projects = () => {
           repeat: Infinity,
         }}
         className="fixed top-0 left-0 overflow-hidden"
-        style={ blobDesign }>
-      </motion.div> */}
+        style={blobDesign}></motion.div>
     </>
   );
 };

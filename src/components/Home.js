@@ -1,16 +1,14 @@
-import React from 'react';
-import '../index.css';
-import me from '../assets/me.jpg';
+import React, { useContext, useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import BottomMenu from './BottomMenu';
+import { Link } from 'react-router-dom';
 import ThemeButton from './ThemeButton';
 import ThemeContext from './ThemeContext';
-import { Link } from 'react-router-dom';
+import me from '../assets/me.jpg';
+import BottomMenu from './BottomMenu';
 
 const Home = () => {
-  const { theme } = React.useContext(ThemeContext);
-
-  const [mouseCoords, setMouseCoords] = React.useState({ x: 0, y: 0 });
+  const { theme } = useContext(ThemeContext);
+  const [mouseCoords, setMouseCoords] = useState({ x: 0, y: 0 });
 
   const options = [
     'Full Stack Developer',
@@ -19,14 +17,14 @@ const Home = () => {
     'Photographer',
   ];
 
-  const [current, setCurrent] = React.useState(0);
+  const [current, setCurrent] = useState(0);
   const length = options.length;
-  const [text, setText] = React.useState('');
-  const [isDeleting, setIsDeleting] = React.useState(false);
-  const [loopNum, setLoopNum] = React.useState(0);
-  const [typingSpeed, setTypingSpeed] = React.useState(150);
+  const [text, setText] = useState('');
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [loopNum, setLoopNum] = useState(0);
+  const [typingSpeed, setTypingSpeed] = useState(150);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const lastIndex = length - 1;
     if (current < 0) {
       setCurrent(lastIndex);
@@ -36,14 +34,14 @@ const Home = () => {
     }
   }, [current, length]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     let slider = setInterval(() => {
       setCurrent(current + 1);
     }, 3000);
     return () => clearInterval(slider);
   }, [current]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const handleType = () => {
       const i = loopNum % options.length;
       const fullText = options[i];
@@ -96,14 +94,9 @@ const Home = () => {
 
   return (
     <>
-      {/*  Main Content */}
       <div
         onMouseMove={onMouseMove}
-        className={
-          "font-['Poppins'] flex min-h-full w-screen items-center overflow-hidden z-20 " +
-          backgroundColor
-        }>
-        {/* content */}
+        className={`font-Poppins flex min-h-screen w-screen items-center overflow-hidden ${backgroundColor}`}>
         <div className="absolute bottom-4 right-4 md:top-4 md:right-4 z-40">
           <div className="flex flex-row">
             <Link to="/projects">
@@ -111,26 +104,24 @@ const Home = () => {
                 variants={buttonVariants}
                 whileHover="hover"
                 whileTap="pressed"
-                className=" text-white font-bold py-2 px-4 rounded ml-2">
+                className={`text-white font-bold py-2 px-4 rounded ml-2 ${backgroundColor}`}>
                 Projects
               </motion.button>
             </Link>
             <ThemeButton />
           </div>
         </div>
-        <div
-          className=" relative flex md:flex-row flex-col-reverse w-full items-center p-10
-min-h-screen justify-end md:justify-between z-20 ">
-          {/* text */}
-          <div className="w-full mt-20 md:mb-0 md:pb-0 md:w-1/2 ">
-            <h1 className={'lg:text-6xl text-4xl ' + textColor}>
-              I am a {''}
+
+        <div className="relative flex md:flex-row flex-col-reverse w-full items-center p-10 min-h-screen justify-end md:justify-between z-20">
+          <div className="w-full mt-20 md:mb-0 md:pb-0 md:w-1/2">
+            <h1 className={`lg:text-6xl text-4xl ${textColor}`}>
+              I am a{' '}
               <span className="text-inherit" style={style}>
                 {text}
               </span>
             </h1>
           </div>
-          {/* image */}
+
           <motion.div
             whileHover={{
               scale: [1, 1.5, 1],
@@ -139,12 +130,14 @@ min-h-screen justify-end md:justify-between z-20 ">
             whileTap={{
               scale: 0.8,
             }}
-            className="md:w-1/3 ">
-            <img className="rounded-full " src={me} alt="" />
+            className="md:w-1/3">
+            <img className="rounded-full" src={me} alt="" />
           </motion.div>
         </div>
       </div>
+
       <BottomMenu />
+
       <motion.div
         animate={{
           x: mouseCoords.x,
