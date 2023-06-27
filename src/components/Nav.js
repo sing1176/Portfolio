@@ -15,8 +15,8 @@ const Nav = () => {
     },
   };
 
-  const isHomePage = location.pathname === '/';
-  const navLink = isHomePage ? '/projects' : '/';
+  const isHomePage = location.pathname === '/portfolio';
+  const navLink = isHomePage ? '/projects' : '/portfolio';
 
   return (
     <div className="flex items-center justify-between px-4 py-2">
