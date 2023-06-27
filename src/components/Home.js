@@ -77,9 +77,7 @@ const Home = () => {
 
   return (
     <>
-      <div className="absolute bottom-4 right-4 md:top-4 md:right-4 z-40">
-        <Nav />
-      </div>
+      <Nav />
       <div
         onMouseMove={onMouseMove}
         className={`font-Poppins flex min-h-screen w-screen items-center overflow-hidden ${backgroundColor}`}>

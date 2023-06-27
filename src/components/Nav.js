@@ -19,7 +19,7 @@ const Nav = () => {
   const navLink = isHomePage ? '/projects' : '/portfolio';
 
   return (
-    <div className="flex items-center justify-between px-4 py-2">
+    <div className="absolute flex top-0 right-0 px-4 py-2 z-40">
       <Link to={navLink}>
         <motion.button
           variants={buttonVariants}

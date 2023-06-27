@@ -32,7 +32,7 @@ const ThemeButton = () => {
   return (
     <motion.div
       whileHover={{ opacity: 1 }}
-      className="relative flex flex-row gap-6  rounded-full items-center p-2 opacity-20 bg-gray-400 ">
+      className="relative flex flex-row gap-6  rounded-full items-center p-2 opacity-20 bg-gray-300 ">
       {/* buttons */}
 
       <button onClick={handleClick} name="light" className="z-10">
@@ -72,7 +72,7 @@ const ThemeButton = () => {
         variants={toggleVariants}
         animate={theme}
         transition={{ duration: 0.3, ease: 'backInOut' }}
-        whileHover={{ opacity: 1 }}
+        whileHover={{ opacity: 0.7 }}
         className="absolute h-8 w-8 bg-white rounded-full "></motion.div>
     </motion.div>
   );
