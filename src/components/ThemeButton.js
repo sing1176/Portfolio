@@ -32,7 +32,11 @@ const ThemeButton = () => {
   return (
     <motion.div
       whileHover={{ opacity: 1 }}
-      className="relative flex flex-row gap-6  rounded-full items-center p-2 opacity-20 bg-gray-300 ">
+      className="relative flex flex-row gap-6  rounded-full items-center p-2 opacity-20 
+      bg-gradient-to-r from-gray-500 to-gray-100 bg-opacity-40
+ 
+ 
+ ">
       {/* buttons */}
 
       <button onClick={handleClick} name="light" className="z-10">
