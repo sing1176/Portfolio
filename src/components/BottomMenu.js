@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { SocialIcon } from 'react-social-icons';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 const BottomMenu = () => {
   const [isOpen, setIsOpen] = useState(false);

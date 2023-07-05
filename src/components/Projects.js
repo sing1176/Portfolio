@@ -77,7 +77,7 @@ const Projects = () => {
               className="project-item"
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.3 }}>
+              transition={{ duration: 1 }}>
               <motion.button
                 className={`p-4 flex flex-col items-center justify-center ${backgroundColor} ${textColor}`}
                 whileHover={{ scale: 1.1 }}
