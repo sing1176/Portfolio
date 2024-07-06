@@ -22,12 +22,6 @@ const BottomMenu = () => {
       icon: 'github',
       key: 3,
     },
-
-    {
-      url: 'https://www.instagram.com/journeyvialens/',
-      icon: 'instagram',
-      key: 4,
-    },
   ];
 
   const Icons = () => {
@@ -83,7 +77,7 @@ const BottomMenu = () => {
     <motion.div
       whileHover={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className="flex items-center gap-4 absolute bottom-4  left-1  md:bottom-10 z-30 md:opacity-20">
+      className="flex items-center gap-4 absolute bottom-4  left-16  md:bottom-10 z-30 md:opacity-20">
       <motion.div
         variants={socialIconVariants}
         initial={false}

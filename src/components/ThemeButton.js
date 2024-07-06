@@ -3,7 +3,6 @@ import ThemeContext from './ThemeContext';
 import { motion } from 'framer-motion';
 
 const ThemeButton = () => {
-
   const { theme, toggleTheme } = React.useContext(ThemeContext);
 
   const handleClick = (e) => {
@@ -33,7 +32,7 @@ const ThemeButton = () => {
     <motion.div
       whileHover={{ opacity: 1 }}
       className="relative flex flex-row gap-6  rounded-full items-center p-2 opacity-20 
-      bg-gradient-to-r from-gray-500 to-gray-100 bg-opacity-40
+
  
  
  ">
